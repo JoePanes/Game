@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Sigil : MonoBehaviour
 {
-
     public GameObject SigilLight;
     public ParticleSystem SigilParticles;
 

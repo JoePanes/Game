@@ -1981,10 +1981,46 @@ MonoBehaviour:
     volume: 0.7
     pitch: 1
     source: {fileID: 0}
-  - name: PlayerPowerAttack
+  - name: PlayerPowerAttackStart
     clip: {fileID: 8300000, guid: d7a9168979fb9624790cd7debbabb8bb, type: 3}
     loopable: 0
     volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlayerPowerAttackSoundEffects
+    clip: {fileID: 8300000, guid: 20af32d2036e898458d17666043e7877, type: 3}
+    loopable: 0
+    volume: 0.698
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlayerRuneSpellWord1
+    clip: {fileID: 8300000, guid: a61e5487b9028ee4fb47a020b3facb91, type: 3}
+    loopable: 0
+    volume: 0.698
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlayerRuneSpellWord2
+    clip: {fileID: 8300000, guid: 2533377dfdeefb14e900a5c96e5efb3e, type: 3}
+    loopable: 0
+    volume: 0.698
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlayerRuneSpellWord3
+    clip: {fileID: 8300000, guid: 000e624efd41c5541808d1d0b0462137, type: 3}
+    loopable: 0
+    volume: 0.705
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlayerRuneSpellWord4
+    clip: {fileID: 8300000, guid: 811650776c8c0d845ba1731d24e75a2b, type: 3}
+    loopable: 0
+    volume: 0.698
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlayerRuneSpellSoundEffect
+    clip: {fileID: 8300000, guid: aae22d713a961404fa505d992f42e318, type: 3}
+    loopable: 0
+    volume: 0.381
     pitch: 1
     source: {fileID: 0}
 --- !u!4 &940737632
@@ -4334,6 +4370,11 @@ MonoBehaviour:
   objectPrefabs:
   - {fileID: 4774910988908166541, guid: 0c719af94ba0226419c51a43bf98350a, type: 3}
   - {fileID: 8084786023573988833, guid: 8ebe7f8eaf25fdc4fb4977e4d1438e84, type: 3}
+--- !u!82 &1816323574 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2118079108, guid: 6e33a30b5ed5ac34ea1894ccbb806846, type: 3}
+  m_PrefabInstance: {fileID: 2453582681749444049}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1817776946 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4792182374000126156, guid: 36478dd95aff21243b2a9f51c067183e, type: 3}
@@ -5014,6 +5055,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2453582683457357650, guid: 6e33a30b5ed5ac34ea1894ccbb806846, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1816323574}
+    - target: {fileID: 2453582683457357650, guid: 6e33a30b5ed5ac34ea1894ccbb806846, type: 3}
+      propertyPath: sigilActivationClip
+      value: 
+      objectReference: {fileID: 8300000, guid: aae22d713a961404fa505d992f42e318, type: 3}
     - target: {fileID: 2453582683457357651, guid: 6e33a30b5ed5ac34ea1894ccbb806846, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -5175,6 +5224,18 @@ PrefabInstance:
     - target: {fileID: 2511858192715572076, guid: 3dd6705f70a4c574fa8c331666258e44, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960483192710994513, guid: 3dd6705f70a4c574fa8c331666258e44, type: 3}
+      propertyPath: m_Range
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960483192710994513, guid: 3dd6705f70a4c574fa8c331666258e44, type: 3}
+      propertyPath: m_SpotAngle
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960483192710994513, guid: 3dd6705f70a4c574fa8c331666258e44, type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dd6705f70a4c574fa8c331666258e44, type: 3}
@@ -5478,6 +5539,18 @@ PrefabInstance:
       propertyPath: InitialModule.startSize.scalar
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 442269616, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 442269616, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 442269616, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 991020641415197004, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -5534,6 +5607,22 @@ PrefabInstance:
       propertyPath: healthDisplay
       value: 
       objectReference: {fileID: 1709075596}
+    - target: {fileID: 5726873657659702750, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5726873657659702750, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: m_AngularDrag
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5726873657659702750, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5726873657659702750, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
 --- !u!1001 &5918793257255540586

@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private float rotationInput;
 
     private bool canPowerAttack;
+    private bool canPlaceRune;
+
     public static bool sprinting;
     public static bool gameOver;
 
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviour
         sprinting = false;
         health = 5;
         canPowerAttack = true;
+        canPlaceRune = true;
 
         //Connect to attached components
         anim = GetComponent<Animator>();
@@ -69,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Instantiate(sigil, transform.position, transform.rotation);
+                StartCoroutine("RunePlacement");
             }
 
             if (Input.GetKeyDown(KeyCode.LeftAlt))
@@ -185,13 +188,38 @@ public class PlayerController : MonoBehaviour
         {
             canPowerAttack = !canPowerAttack;
 
-            audioMana.Play("PlayerPowerAttack");
+            audioMana.Play("PlayerPowerAttackStart");
             yield return new WaitForSeconds(1.5f);
             powerAttack.Play();
+            audioMana.Play("PlayerPowerAttackSoundEffects");
+
         } else
         {
             yield return new WaitForSeconds(0);
         }
+    }
+
+    IEnumerator RunePlacement()
+    {
+        if (canPlaceRune)
+        {
+
+            canPlaceRune = false;
+
+            //Play a random version of the word for the spell
+            int soundClip = Random.Range(1, 5);
+            audioMana.Play("PlayerRuneSpellWord" + soundClip);
+            yield return new WaitForSeconds(0.75f);
+            audioMana.Play("PlayerRuneSpellSoundEffect");
+            yield return new WaitForSeconds(0.75f);
+            Instantiate(sigil, transform.position, transform.rotation);
+            canPlaceRune = true;
+
+        } else
+        {
+            yield return new WaitForSeconds(0);
+        }
+
     }
 
     void GameOver()
