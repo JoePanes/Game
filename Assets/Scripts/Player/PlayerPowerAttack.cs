@@ -10,7 +10,7 @@ public class PlayerPowerAttack : MonoBehaviour
         //If particle collides with an enemy, destroy them and itself
         if (other.CompareTag("Enemy"))
         {
-            Destroy(other);
+            other.GetComponent<Enemy>().DestroyEnemy();
         }
     }
 }

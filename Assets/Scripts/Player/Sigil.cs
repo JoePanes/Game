@@ -52,10 +52,11 @@ public class Sigil : MonoBehaviour
     {
         if(other.CompareTag("Enemy"))
         {
+            SigilLight.SetActive(true);
             hasBeenTriggered = true;
             SigilParticles.Play();
-            Destroy(other.gameObject);
 
+            other.GetComponent<Enemy>().DestroyEnemy();
         }
     }
 

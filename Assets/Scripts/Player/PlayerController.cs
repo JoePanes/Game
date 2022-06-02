@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
     public float gravityModifer;
 
-    public GameObject projectile;
+    public GameObject sigil;
 
     private Animator anim;
 
@@ -69,8 +69,12 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                Instantiate(sigil, transform.position, transform.rotation);
+            }
+
+            if (Input.GetKeyDown(KeyCode.LeftAlt))
+            {
                 StartCoroutine("PowerAttack");
-                LaunchProjectile();
             }
         }
     }
@@ -188,14 +192,6 @@ public class PlayerController : MonoBehaviour
         {
             yield return new WaitForSeconds(0);
         }
-    }
-
-    void LaunchProjectile()
-    {
-        //From the player, launch a projectile
-
-        Vector3 spawnPoint = transform.position + (transform.rotation * new Vector3(0, 0, 0.5f));
-        Instantiate(projectile, spawnPoint, transform.rotation);
     }
 
     void GameOver()

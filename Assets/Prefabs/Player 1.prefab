@@ -3933,7 +3933,7 @@ ParticleSystem:
     lifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.000000011
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3984,14 +3984,14 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     minVertexDistance: 0.2
-    textureMode: 0
+    textureMode: 1
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 1
     dieWithParticles: 0
-    sizeAffectsWidth: 1
-    sizeAffectsLifetime: 1
-    inheritParticleColor: 1
+    sizeAffectsWidth: 0
+    sizeAffectsLifetime: 0
+    inheritParticleColor: 0
     generateLightingData: 1
     splitSubEmitterRibbons: 0
     attachRibbonsToTransform: 0
@@ -4061,7 +4061,7 @@ ParticleSystem:
     widthOverTrail:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4115,7 +4115,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 0, b: 0, a: 1}
-      maxColor: {r: 0, g: 0.51618147, b: 1, a: 1}
+      maxColor: {r: 0, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4824,6 +4824,7 @@ GameObject:
   - component: {fileID: 442269614}
   - component: {fileID: 442269616}
   - component: {fileID: 442269615}
+  - component: {fileID: 1932347374}
   m_Layer: 0
   m_Name: PowerAttack
   m_TagString: Untagged
@@ -5474,8 +5475,8 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 17
-    angle: 25
+    type: 4
+    angle: 88.35
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -5619,7 +5620,7 @@ ParticleSystem:
           m_RotationOrder: 4
     arc:
       value: 360
-      mode: 1
+      mode: 0
       spread: 0
       speed:
         serializedVersion: 2
@@ -5680,7 +5681,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 20
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -8602,7 +8603,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -9626,6 +9627,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &1932347374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442269613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b17365350e22ae4bace1b9ccbb7a976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1943026248
 GameObject:
   m_ObjectHideFlags: 0
@@ -11582,7 +11595,6 @@ GameObject:
   - component: {fileID: 991020641408210858}
   - component: {fileID: 5726873657659702750}
   - component: {fileID: 5726873657659702745}
-  - component: {fileID: 1056398656}
   - component: {fileID: 964883842}
   m_Layer: 0
   m_Name: Player 1
@@ -11675,15 +11687,8 @@ MonoBehaviour:
   healthDisplay: {fileID: 0}
   goldCounter: {fileID: 0}
   gravityModifer: 1
-  projectile: {fileID: 3318699408349812649, guid: c3c3ce3ba1798464b89990f0b2d658b7, type: 3}
---- !u!81 &1056398656
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 991020641415386306}
-  m_Enabled: 1
+  sigil: {fileID: 2453582683457357740, guid: 6e33a30b5ed5ac34ea1894ccbb806846, type: 3}
+  powerAttack: {fileID: 442269616}
 --- !u!136 &964883842
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13875,6 +13880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 991020641415194482}
   - component: {fileID: 991020641412197754}
+  - component: {fileID: 1394631962}
   m_Layer: 0
   m_Name: Character_Male_Sorcerer
   m_TagString: Untagged
@@ -13999,6 +14005,14 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0004348755, y: 86.71605, z: -7.1418514}
     m_Extent: {x: 102.45622, y: 96.82539, z: 29.05353}
   m_DirtyAABB: 0
+--- !u!81 &1394631962
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991020641415591158}
+  m_Enabled: 1
 --- !u!1 &991020641415591180
 GameObject:
   m_ObjectHideFlags: 0

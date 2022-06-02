@@ -38,5 +38,6 @@ public class Enemy : MonoBehaviour
     public void DestroyEnemy()
     {
         FindObjectOfType<SpawnManager>().DecrementEnemyCount();
+        Destroy(gameObject);
     }
 }
