@@ -52,6 +52,7 @@ public class Sigil : MonoBehaviour
     {
         if(other.CompareTag("Enemy"))
         {
+            GetComponent<AudioSource>().Play();
             SigilLight.SetActive(true);
             hasBeenTriggered = true;
             SigilParticles.Play();
