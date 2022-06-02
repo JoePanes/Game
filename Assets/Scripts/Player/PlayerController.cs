@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
     private bool canPowerAttack;
     private bool canPlaceRune;
 
+    //To keep track of how much gold is
+    ///needed to replenish the power attack
+    private int powerAttackGoldCount;
+
     public static bool sprinting;
     public static bool gameOver;
 
@@ -49,6 +53,8 @@ public class PlayerController : MonoBehaviour
         health = 5;
         canPowerAttack = true;
         canPlaceRune = true;
+
+        powerAttackGoldCount = 0;
 
         //Connect to attached components
         anim = GetComponent<Animator>();
@@ -143,6 +149,21 @@ public class PlayerController : MonoBehaviour
         collectedGold += 1;
 
         DisplayGold();
+        
+        if (canPowerAttack == false)
+        {
+            powerAttackGoldCount += 1;
+        }
+
+        if (canPowerAttack == false && powerAttackGoldCount >= 3)
+        {
+            canPowerAttack = true;
+            powerAttackGoldCount = 0;
+
+        }
+        
+
+        Debug.Log(powerAttackGoldCount);
     }
 
     void TakeDamage()
@@ -186,7 +207,8 @@ public class PlayerController : MonoBehaviour
     {
         if (canPowerAttack)
         {
-            canPowerAttack = !canPowerAttack;
+            canPowerAttack = false;
+            powerAttackGoldCount = 0;
 
             audioMana.Play("PlayerPowerAttackStart");
             yield return new WaitForSeconds(1.5f);
@@ -209,9 +231,13 @@ public class PlayerController : MonoBehaviour
             //Play a random version of the word for the spell
             int soundClip = Random.Range(1, 5);
             audioMana.Play("PlayerRuneSpellWord" + soundClip);
+            
             yield return new WaitForSeconds(0.75f);
+            
             audioMana.Play("PlayerRuneSpellSoundEffect");
+
             yield return new WaitForSeconds(0.75f);
+            //Spawn rune
             Instantiate(sigil, transform.position, transform.rotation);
             canPlaceRune = true;
 
@@ -230,5 +256,4 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isGameOver", true);
         audioMana.Play("PlayerDeath");
     }
-
 }
