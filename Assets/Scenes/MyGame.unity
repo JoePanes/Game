@@ -5453,6 +5453,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 276643088, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: TrailModule.textureMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 276643088, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
       propertyPath: TrailModule.lifetime.scalar
       value: 1
       objectReference: {fileID: 0}
@@ -5465,12 +5469,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 276643088, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: TrailModule.generateLightingData
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 276643088, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
       propertyPath: TrailModule.inheritParticleColor
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 276643088, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
       propertyPath: TrailModule.widthOverTrail.scalar
-      value: 0.35
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 276643088, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: TrailModule.colorOverTrail.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 276643088, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: TrailModule.colorOverTrail.maxColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 276643088, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: TrailModule.colorOverTrail.maxColor.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 442269616, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
       propertyPath: ShapeModule.type
