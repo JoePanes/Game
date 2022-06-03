@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private int health;
     private int collectedGold;
 
-    private float speed = 2750;
+    private float speed = 1500;
     private float turnSpeed = 75;
 
     private float forwardInput;
@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && sprinting == false)
         {
             sprinting = true;
-            speed = speed * 2;
+            speed = speed * 2.5f;
             StartCoroutine("Sprint");
         }
         // if the player is moving backwards, reduce speed
@@ -241,6 +241,8 @@ public class PlayerController : MonoBehaviour
             audioMana.Play("PlayerRuneSpellSoundEffect");
 
             yield return new WaitForSeconds(0.75f);
+
+
             //Spawn rune
             Instantiate(sigil, transform.position, transform.rotation);
             canPlaceRune = true;
