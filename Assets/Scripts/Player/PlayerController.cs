@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //Prevent dying enemies from harming player
-        if (collision.gameObject.CompareTag("Enemy") && collision.gameObject.GetComponent<Enemy>().CheckIfDead()) 
+        if (collision.gameObject.CompareTag("Enemy") && collision.gameObject.GetComponent<Enemy>().CheckIfDead() == false) 
         {
             TakeDamage();
             

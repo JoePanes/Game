@@ -30,12 +30,23 @@ public class EnemyAI : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    public bool attackingPlayer;
+    public bool canSprint;
+
+    private float normalSpeed;
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
 
         enemy = GetComponent<Enemy>();
+
+        attackingPlayer = false;
+
+        // give a 9% chance that the enemy is able to run faster at the player
+        if (Random.Range(0, 101) > 90) canSprint = true;
+        normalSpeed = agent.speed;
     }
 
     private void Update()
@@ -81,23 +92,43 @@ public class EnemyAI : MonoBehaviour
         //Make sure point in on the ground
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
             walkPointSet = true;
+
+        //If player gets away and the enemy has been in attacking range, reset speed
+        if (attackingPlayer)
+        {
+            attackingPlayer = false;
+            agent.speed = normalSpeed;
+        }
     }
 
     private void ChasePlayer()
     {
-        agent.SetDestination(player.position);
+
+
+        walkPoint = player.position;
+
+        agent.SetDestination(walkPoint);
 
         //In the event that the player runs out of range,
         //go to their last known position
-        walkPoint = player.position;
+
         walkPointSet = true;
     }
 
     private void AttackPlayer()
     {
-        //Make sure enemy doesn't move
-        agent.SetDestination(transform.position);
+        walkPoint = player.position;
 
-        transform.LookAt(player);
+        walkPoint = player.position;
+
+        
+
+        attackingPlayer = true;
+        if (canSprint)
+        {
+            agent.speed = agent.speed * 1.5f;
+        }
+
+        agent.SetDestination(walkPoint);
     }
 }
