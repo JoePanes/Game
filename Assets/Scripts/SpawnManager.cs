@@ -10,7 +10,8 @@ public class SpawnManager : MonoBehaviour
     private float spawnDelay = 2;
     private float spawnInterval = 5;
 
-    private int maxEnemies = 7;
+    private int maxEnemies = 2;
+    private int maxTreasure = 1;
     private int currentEnemiesAlive;
     public GameObject[] objectPrefabs;
     // Start is called before the first frame update
@@ -28,10 +29,10 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnObjects()
     {
-
         int index = Random.Range(0, objectPrefabs.Length);
 
         bool isEnemy = objectPrefabs[index].CompareTag("Enemy");
+
         //Check if current object should be spawned
         if (isEnemy && currentEnemiesAlive >= maxEnemies)
         {
@@ -58,6 +59,14 @@ public class SpawnManager : MonoBehaviour
     public void DecrementEnemyCount()
     {
         currentEnemiesAlive -= 1;
-        Debug.Log(currentEnemiesAlive);
+        IncremenetMaxEnemies();
+    }
+
+    public void IncremenetMaxEnemies()
+    {
+        maxEnemies += 1;
+
+        //Update treasure
+        maxTreasure = maxEnemies / 2;
     }
 }

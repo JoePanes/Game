@@ -26,7 +26,7 @@ public class Sigil : MonoBehaviour
         if (hasBeenTriggered)
         {
             ShowSigilTriggered();
-        }
+        } 
     }
 
     void ShowSigilTriggered()

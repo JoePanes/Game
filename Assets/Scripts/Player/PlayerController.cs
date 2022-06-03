@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
     private AudioManager audioMana;
 
     Rigidbody playerRb;
+
+    public SpawnManager spawner;
     
 
     // Start is called before the first frame update
@@ -66,6 +68,7 @@ public class PlayerController : MonoBehaviour
 
         audioMana = FindObjectOfType<AudioManager>();
 
+        spawner = FindObjectOfType<SpawnManager>();
     }
 
     // Update is called once per frame
@@ -124,7 +127,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        //Prevent dying enemies from harming player
+        if (collision.gameObject.CompareTag("Enemy") && collision.gameObject.GetComponent<Enemy>().CheckIfDead()) 
         {
             TakeDamage();
             
@@ -137,7 +141,7 @@ public class PlayerController : MonoBehaviour
         } else if (collision.gameObject.CompareTag("Treasure"))
         {
             UpdateGold();
-
+            spawner.IncremenetMaxEnemies();
             Destroy(collision.gameObject);
         }
 
