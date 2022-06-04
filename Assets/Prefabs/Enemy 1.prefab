@@ -31093,15 +31093,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 20
+  walkPointRange: 10
   timeBetweenAttacks: 0
   projectile: {fileID: 0}
-  sightRange: 30
-  attackRange: 10
+  sightRange: 20
+  attackRange: 5
   playerInSightRange: 0
   playerInAttackRange: 0
   attackingPlayer: 0
-  canSprint: 1
+  canSprint: 0
 --- !u!1 &4774910988920113403
 GameObject:
   m_ObjectHideFlags: 0

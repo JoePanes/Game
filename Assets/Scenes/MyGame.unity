@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0, g: 0, b: 0, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.04
@@ -19054,6 +19054,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1943026250, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: m_Range
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1943026250, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
       propertyPath: m_Intensity
       value: 1
       objectReference: {fileID: 0}
@@ -19124,6 +19128,38 @@ PrefabInstance:
     - target: {fileID: 991020641415386306, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910595873671169448, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910595873671169448, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.509
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910595873671169448, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.657
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910595873671169448, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8545161
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910595873671169448, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.51942503
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910595873671169448, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000000029802319
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910595873671169448, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.000000059604638
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910595873671169448, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 62.587
       objectReference: {fileID: 0}
     - target: {fileID: 5726873657659702745, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
       propertyPath: spawner
