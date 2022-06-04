@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    private float spawnRangeX = 20;
-    private float spawnRangeZ = 20;
+    private float spawnRangeX = 70;
+    private float spawnRangeZ = 60;
 
     private float spawnDelay = 2;
     private float spawnInterval = 5;
@@ -36,8 +36,6 @@ public class SpawnManager : MonoBehaviour
         //Check if current object should be spawned
         if (isEnemy && currentEnemiesAlive >= maxEnemies)
         {
-            // If too many enemies present, try again
-            SpawnObjects();
             return;
         } else if (isEnemy)
         {
@@ -53,7 +51,7 @@ public class SpawnManager : MonoBehaviour
     {
         float xPos = Random.Range(-spawnRangeX, spawnRangeX);
         float zPos = Random.Range(-spawnRangeZ, spawnRangeZ);
-        return new Vector3(xPos, 0, zPos);
+        return new Vector3(xPos, 1, zPos);
     }
 
     public void DecrementEnemyCount()

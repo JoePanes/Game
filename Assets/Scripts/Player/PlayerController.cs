@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour
     private int health;
     private int collectedGold;
 
-    private float speed = 1500;
+    private float speed = 2000;
+    private float sprintSpeedMultiplier = 3;
     private float turnSpeed = 75;
 
     private float forwardInput;
@@ -44,6 +45,20 @@ public class PlayerController : MonoBehaviour
     public SpawnManager spawner;
     
 
+    private bool canMove;
+
+    private void Awake()
+    {
+        canMove = false;
+        StartCoroutine(WaitForStartingAnimation());
+    }
+
+    IEnumerator WaitForStartingAnimation()
+    {
+        yield return new WaitForSeconds(15);
+        canMove = true;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,10 +89,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        MovePlayer();
 
         if (gameOver != true)
         {
-            MovePlayer();
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -93,6 +108,7 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer() 
     {
+        if (!canMove) return;
 
         //Allow the player to move forward and backward
         forwardInput = Input.GetAxis("Vertical");
@@ -100,7 +116,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && sprinting == false)
         {
             sprinting = true;
-            speed = speed * 2.5f;
+            speed = speed * sprintSpeedMultiplier;
             StartCoroutine("Sprint");
         }
         // if the player is moving backwards, reduce speed
@@ -200,7 +216,7 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isSprinting", true);
         yield return new WaitForSeconds(2);
 
-        speed = speed / 2;
+        speed = speed / sprintSpeedMultiplier;
 
         anim.SetBool("isSprinting", false);
         sprinting = false;
@@ -256,6 +272,7 @@ public class PlayerController : MonoBehaviour
 
     void GameOver()
     {
+        canMove = false;
         Debug.Log("Game Over");
         gameOver = true;
 

@@ -34,6 +34,7 @@ public class EnemyAI : MonoBehaviour
     public bool canSprint;
 
     private float normalSpeed;
+    private float sprintSpeed;
 
     private void Awake()
     {
@@ -46,7 +47,9 @@ public class EnemyAI : MonoBehaviour
 
         // give a 9% chance that the enemy is able to run faster at the player
         if (Random.Range(0, 101) > 90) canSprint = true;
+
         normalSpeed = agent.speed;
+        sprintSpeed = normalSpeed * 1.5f;
     }
 
     private void Update()
@@ -126,7 +129,7 @@ public class EnemyAI : MonoBehaviour
         attackingPlayer = true;
         if (canSprint)
         {
-            agent.speed = agent.speed * 1.5f;
+            agent.speed = sprintSpeed;
         }
 
         agent.SetDestination(walkPoint);
