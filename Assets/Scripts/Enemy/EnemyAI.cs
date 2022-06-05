@@ -8,23 +8,18 @@ using UnityEngine.AI;
 /// </summary>
 public class EnemyAI : MonoBehaviour
 {
-    private NavMeshAgent agent;
+    protected NavMeshAgent agent;
 
-    private Transform player;
+    protected Transform player;
 
-    private Enemy enemy;
+    protected Enemy enemy;
 
     public LayerMask whatIsGround, whatIsPlayer;
 
     //Patroling
     public Vector3 walkPoint;
-    bool walkPointSet;
+    public bool walkPointSet;
     public float walkPointRange;
-
-    //Attacking
-    public float timeBetweenAttacks;
-    bool alreadyAttacked;
-    public GameObject projectile;
 
     //States
     public float sightRange, attackRange;
@@ -33,10 +28,10 @@ public class EnemyAI : MonoBehaviour
     public bool attackingPlayer;
     public bool canSprint;
 
-    private float normalSpeed;
-    private float sprintSpeed;
+    public float normalSpeed;
+    public float sprintSpeed;
 
-    private void Awake()
+    public void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
@@ -49,10 +44,10 @@ public class EnemyAI : MonoBehaviour
         if (Random.Range(0, 101) > 90) canSprint = true;
 
         normalSpeed = agent.speed;
-        sprintSpeed = normalSpeed * 1.5f;
+        sprintSpeed = normalSpeed * 2f;
     }
 
-    private void Update()
+    public void Update()
     {
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
@@ -71,7 +66,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void Patroling()
+    public void Patroling()
     {
         if (!walkPointSet) SearchWalkPoint();
 
@@ -84,7 +79,7 @@ public class EnemyAI : MonoBehaviour
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
     }
-    private void SearchWalkPoint()
+    public void SearchWalkPoint()
     {
         //Calculate random point in range
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
@@ -104,10 +99,8 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void ChasePlayer()
+    public void ChasePlayer()
     {
-
-
         walkPoint = player.position;
 
         agent.SetDestination(walkPoint);
@@ -118,20 +111,8 @@ public class EnemyAI : MonoBehaviour
         walkPointSet = true;
     }
 
-    private void AttackPlayer()
+    public virtual void AttackPlayer()
     {
-        walkPoint = player.position;
-
-        walkPoint = player.position;
-
-        
-
-        attackingPlayer = true;
-        if (canSprint)
-        {
-            agent.speed = sprintSpeed;
-        }
-
-        agent.SetDestination(walkPoint);
+        return;
     }
 }

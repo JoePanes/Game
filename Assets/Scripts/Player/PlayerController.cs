@@ -148,13 +148,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") && collision.gameObject.GetComponent<Enemy>().CheckIfDead() == false) 
         {
             TakeDamage();
-            
-            // If player has no health, then end game
-            if (NoHealth() && !gameOver)
-            {
-                GameOver();
-            }
-            
+                       
         } else if (collision.gameObject.CompareTag("Treasure"))
         {
             UpdateGold();
@@ -190,7 +184,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log(powerAttackGoldCount);
     }
 
-    void TakeDamage()
+    public void TakeDamage()
     {
         if (health > 0)
         {
@@ -198,7 +192,15 @@ public class PlayerController : MonoBehaviour
             health -= 1;
 
             DisplayHealth();
+
+            // If player has no health, then end game
+            if (NoHealth() && !gameOver)
+            {
+                GameOver();
+            }
         }
+
+        
     }
 
     void DisplayGold()
@@ -211,7 +213,7 @@ public class PlayerController : MonoBehaviour
         healthDisplay.text = "Health: " + health;
     }
 
-    bool NoHealth()
+    public bool NoHealth()
     {
         return health <= 0;
     }
@@ -283,5 +285,10 @@ public class PlayerController : MonoBehaviour
 
         anim.SetBool("isGameOver", true);
         audioMana.Play("PlayerDeath");
+    }
+
+    public bool isGameOver()
+    {
+        return gameOver;
     }
 }

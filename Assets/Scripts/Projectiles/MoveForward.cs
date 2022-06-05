@@ -20,10 +20,12 @@ public class MoveForward : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        Debug.Log(other.gameObject.tag);
-        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject);
+            other.GetComponent<Enemy>().DestroyEnemy();
+        } else if (other.gameObject.CompareTag("Player"))
+        {
+            other.GetComponent<PlayerController>().TakeDamage();
         }
         Destroy(gameObject);
     }
