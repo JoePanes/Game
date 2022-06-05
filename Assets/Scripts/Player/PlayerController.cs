@@ -9,8 +9,9 @@ public class PlayerController : MonoBehaviour
     private int health;
     private int collectedGold;
 
-    private float speed = 2000;
-    private float sprintSpeedMultiplier = 3;
+    private float speed = 2500;
+    private float normalSpeed;
+    private float sprintSpeed = 4500;
     private float turnSpeed = 75;
 
     private float forwardInput;
@@ -70,7 +71,7 @@ public class PlayerController : MonoBehaviour
         health = 5;
         canPowerAttack = true;
         canPlaceRune = true;
-
+        normalSpeed = speed;
         powerAttackGoldCount = 0;
 
         //Connect to attached components
@@ -116,7 +117,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && sprinting == false)
         {
             sprinting = true;
-            speed = speed * sprintSpeedMultiplier;
+            speed = sprintSpeed;
             StartCoroutine("Sprint");
         }
         // if the player is moving backwards, reduce speed
@@ -157,6 +158,9 @@ public class PlayerController : MonoBehaviour
         } else if (collision.gameObject.CompareTag("Treasure"))
         {
             UpdateGold();
+
+            spawner.DecrementTreasureCount();
+            
             spawner.IncremenetMaxEnemies();
             Destroy(collision.gameObject);
         }
@@ -190,6 +194,7 @@ public class PlayerController : MonoBehaviour
     {
         if (health > 0)
         {
+            audioMana.Play("PlayerDamaged" + Random.Range(1, 11));
             health -= 1;
 
             DisplayHealth();
@@ -216,7 +221,7 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isSprinting", true);
         yield return new WaitForSeconds(2);
 
-        speed = speed / sprintSpeedMultiplier;
+        speed = normalSpeed;
 
         anim.SetBool("isSprinting", false);
         sprinting = false;

@@ -13,11 +13,14 @@ public class SpawnManager : MonoBehaviour
     private int maxEnemies = 2;
     private int maxTreasure = 1;
     private int currentEnemiesAlive;
+    private int currentTreasure;
     public GameObject[] objectPrefabs;
     // Start is called before the first frame update
     void Start()
     {
         currentEnemiesAlive = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        currentTreasure = GameObject.FindGameObjectsWithTag("Treasure").Length;
+
         InvokeRepeating("SpawnObjects", spawnDelay, spawnInterval);
     }
 
@@ -34,12 +37,26 @@ public class SpawnManager : MonoBehaviour
         bool isEnemy = objectPrefabs[index].CompareTag("Enemy");
 
         //Check if current object should be spawned
-        if (isEnemy && currentEnemiesAlive >= maxEnemies)
+        if (isEnemy)
         {
-            return;
-        } else if (isEnemy)
+            //If max enemies reached, don't spawn
+            if (currentEnemiesAlive >= maxEnemies)
+            {
+                return;
+            } else
+            {
+                currentEnemiesAlive += 1;
+            }
+        } else
         {
-            currentEnemiesAlive += 1;
+            //Don't spawn more treasure past a certain limit
+            if (currentTreasure >= maxTreasure)
+            {
+                return;
+            } else
+            {
+                currentTreasure += 1;
+            }
         }
         Vector3 spawnLocation = GenerateSpawnPosition();
         
@@ -51,6 +68,8 @@ public class SpawnManager : MonoBehaviour
     {
         float xPos = Random.Range(-spawnRangeX, spawnRangeX);
         float zPos = Random.Range(-spawnRangeZ, spawnRangeZ);
+
+        //1 for y so it doesn't fall through the floor
         return new Vector3(xPos, 1, zPos);
     }
 
@@ -58,6 +77,11 @@ public class SpawnManager : MonoBehaviour
     {
         currentEnemiesAlive -= 1;
         IncremenetMaxEnemies();
+    }
+
+    public void DecrementTreasureCount()
+    {
+        currentTreasure -= 1;
     }
 
     public void IncremenetMaxEnemies()

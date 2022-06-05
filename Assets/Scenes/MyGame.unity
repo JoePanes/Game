@@ -7457,7 +7457,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 30
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -7848,6 +7848,66 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: PlayerRuneSpellSoundEffect
     clip: {fileID: 8300000, guid: aae22d713a961404fa505d992f42e318, type: 3}
+    loopable: 0
+    volume: 0.381
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlayerDamaged1
+    clip: {fileID: 8300000, guid: 1242b17aeba215b4d866e61d295e843f, type: 3}
+    loopable: 0
+    volume: 0.381
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlayerDamaged2
+    clip: {fileID: 8300000, guid: 07cd52f593d4a19428ee41d2b4865abf, type: 3}
+    loopable: 0
+    volume: 0.381
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlayerDamaged3
+    clip: {fileID: 8300000, guid: 2ad06e724a33c4e4f83f875890242dae, type: 3}
+    loopable: 0
+    volume: 0.381
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlayerDamaged4
+    clip: {fileID: 8300000, guid: 15b128008fbd3414197b84ff4ec9dfff, type: 3}
+    loopable: 0
+    volume: 0.381
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlayerDamaged5
+    clip: {fileID: 8300000, guid: f171213cf9335e04288ec14de0be9c46, type: 3}
+    loopable: 0
+    volume: 0.381
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlayerDamaged6
+    clip: {fileID: 8300000, guid: d8c62daee79bc5243b1a73fca051b53a, type: 3}
+    loopable: 0
+    volume: 0.381
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlayerDamaged7
+    clip: {fileID: 8300000, guid: 19a51c305dc5ce9408eb7fb306e3cb23, type: 3}
+    loopable: 0
+    volume: 0.381
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlayerDamaged8
+    clip: {fileID: 8300000, guid: 5553eccd67120194b9db4d98e41543de, type: 3}
+    loopable: 0
+    volume: 0.381
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlayerDamaged9
+    clip: {fileID: 8300000, guid: 67b9aa74dbd82bf46bf07c716048896a, type: 3}
+    loopable: 0
+    volume: 0.381
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlayerDamaged10
+    clip: {fileID: 8300000, guid: 5c55f484de7f3e54f9e7fafa5ce0dd77, type: 3}
     loopable: 0
     volume: 0.381
     pitch: 1
@@ -19173,6 +19233,10 @@ PrefabInstance:
       propertyPath: healthDisplay
       value: 
       objectReference: {fileID: 1709075596}
+    - target: {fileID: 5726873657659702750, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
 --- !u!1001 &5918793257255540586
