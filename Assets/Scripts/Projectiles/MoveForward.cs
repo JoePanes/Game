@@ -6,6 +6,8 @@ public class MoveForward : MonoBehaviour
 {
     protected static float speed;
 
+    protected bool canDamage;
+
     protected static AudioSource audiosource;
     // Start is called before the first frame update
     void Start()
@@ -21,17 +23,20 @@ public class MoveForward : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //Allow for the projectile to not impact anything if specified
+        if (canDamage)
+        {
+            if (other.gameObject.CompareTag("Enemy"))
+            {
+                other.GetComponent<Enemy>().DestroyEnemy();
+            }
+            else if (other.gameObject.CompareTag("Player"))
+            {
+                other.GetComponent<PlayerController>().TakeDamage();
+            }
 
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            other.GetComponent<Enemy>().DestroyEnemy();
-        } else if (other.gameObject.CompareTag("Player"))
-        {
-            other.GetComponent<PlayerController>().TakeDamage();
+            Destroy(gameObject);
         }
-
-        Destroy(gameObject);
-
     }
 
 }

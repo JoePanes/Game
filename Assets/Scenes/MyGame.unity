@@ -3267,6 +3267,10 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 252680116, guid: eda5ef8bfa1b36842be7b6d0ddc57616, type: 3}
+      propertyPath: attackRange
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1520184032351820, guid: eda5ef8bfa1b36842be7b6d0ddc57616, type: 3}
       propertyPath: m_Name
       value: Enemy Range
@@ -3281,7 +3285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4986658054915990, guid: eda5ef8bfa1b36842be7b6d0ddc57616, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.942
+      value: 44.64
       objectReference: {fileID: 0}
     - target: {fileID: 4986658054915990, guid: eda5ef8bfa1b36842be7b6d0ddc57616, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3289,7 +3293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4986658054915990, guid: eda5ef8bfa1b36842be7b6d0ddc57616, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 36.74
       objectReference: {fileID: 0}
     - target: {fileID: 4986658054915990, guid: eda5ef8bfa1b36842be7b6d0ddc57616, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15937,9 +15941,8 @@ MonoBehaviour:
   objectPrefabs:
   - {fileID: 4774910988908166541, guid: 0c719af94ba0226419c51a43bf98350a, type: 3}
   - {fileID: 8084786023573988833, guid: 8ebe7f8eaf25fdc4fb4977e4d1438e84, type: 3}
-  - {fileID: 3282730685329579848, guid: 7ab132be3453b3a4bb9607bb1ee1a3af, type: 3}
-  - {fileID: 9174251627383318834, guid: 59d4339df9db98b4eb40059baade6608, type: 3}
-  UnkillableEnemy: {fileID: 0}
+  - {fileID: 1468127194560567542, guid: ad6287bf31b2c284b949ae7aab4f16de, type: 3}
+  UnkillableEnemy: {fileID: 3282730685329579848, guid: 7ab132be3453b3a4bb9607bb1ee1a3af, type: 3}
 --- !u!4 &1817776946 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4792182374000126156, guid: 36478dd95aff21243b2a9f51c067183e, type: 3}

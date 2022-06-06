@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     private int health;
-    private int collectedGold;
+    public int collectedGold { get; private set;}
 
     private float speed = 2500;
     private float normalSpeed;
@@ -25,12 +25,12 @@ public class PlayerController : MonoBehaviour
     private int powerAttackGoldCount;
 
     public static bool sprinting;
-    public static bool gameOver;
+    public static bool gameOver { get; private set;}
 
     public TextMeshProUGUI healthDisplay;
     public TextMeshProUGUI goldCounter;
 
-    public float gravityModifer;
+    private float gravityModifer;
 
     public GameObject sigil;
 
@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator WaitForStartingAnimation()
     {
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(1);
         canMove = true;
     }
 
@@ -65,14 +65,14 @@ public class PlayerController : MonoBehaviour
     {
         //Initialise variables
         Physics.gravity *= gravityModifer;
-        gameOver = false;
-        collectedGold = 0;
         sprinting = false;
         health = 5;
         canPowerAttack = true;
         canPlaceRune = true;
         normalSpeed = speed;
         powerAttackGoldCount = 0;
+        collectedGold = 0;
+        gameOver = false;
 
         //Connect to attached components
         anim = GetComponent<Animator>();
@@ -177,7 +177,12 @@ public class PlayerController : MonoBehaviour
         {
             canPowerAttack = true;
             powerAttackGoldCount = 0;
+        }
 
+        if (collectedGold % 5 == 0)
+        {
+            health += 1;
+            DisplayHealth();
         }
         
 

@@ -38,13 +38,12 @@ public class EnemyAIRanged : EnemyAI
 
     private void SpawnProjectile()
     {
-        Vector3 spawnPos = new Vector3 (2f, 1f, 0f) + Vector3.forward;
-        Instantiate(projectile, spawnPos, transform.rotation);
+        Instantiate(projectile, transform.position, transform.rotation);
     }
 
     IEnumerator ResetAttack()
     {
-        yield return new WaitForSeconds(Random.Range(5, 10));
+        yield return new WaitForSeconds(Random.Range(10, 20));
         hasAttackedPlayer = false;
     }
 }

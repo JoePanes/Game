@@ -19,17 +19,26 @@ public class SpawnManager : MonoBehaviour
     private int currentTreasure;
     public GameObject[] objectPrefabs;
 
+    private int unkillableSpawnThreshold = 20;
+
     [SerializeField]
     private GameObject UnkillableEnemy;
+
+    private PlayerController playerControl;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        playerControl = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        
         currentUnkillableAmount = GameObject.FindGameObjectsWithTag("Unkillable").Length;
         currentEnemiesAlive = GameObject.FindGameObjectsWithTag("Enemy").Length;
         currentTreasure = GameObject.FindGameObjectsWithTag("Treasure").Length;
 
+        //Spawners
         InvokeRepeating("SpawnObject", spawnDelay, spawnInterval);
+        StartCoroutine(UnkillableSpawner());
     }
 
     // Update is called once per frame
@@ -42,12 +51,12 @@ public class SpawnManager : MonoBehaviour
     {
         int index = Random.Range(0, objectPrefabs.Length);
 
-        spawnObject(objectPrefabs[index]);
+        SpawnObject(objectPrefabs[index]);
 
 
     }
 
-    void spawnObject(GameObject currentObject)
+    void SpawnObject(GameObject currentObject)
     {
         if (CheckIfObjectAllowed(currentObject))
         {
@@ -152,5 +161,32 @@ public class SpawnManager : MonoBehaviour
 
         //Update treasure
         maxTreasure = maxEnemies / 2;
+    }
+
+    private int GetNumberOfUnkillableToSpawn()
+    {
+        int playerTreasure = playerControl.collectedGold - unkillableSpawnThreshold;
+
+        int numberOfUnkillable = 0;
+        if (playerTreasure < 0)
+        {
+            return numberOfUnkillable;
+        } else
+        {
+            return playerTreasure / 10 + 1;
+        }
+    }
+
+    IEnumerator UnkillableSpawner()
+    {
+        int numberToSpawn = GetNumberOfUnkillableToSpawn();
+
+        if (numberToSpawn > 0 && numberToSpawn > currentUnkillableAmount)
+        {
+            SpawnObject(UnkillableEnemy);
+            currentUnkillableAmount += 1;
+        }
+        yield return new WaitForSeconds(Random.Range(10, 100));
+        StartCoroutine(UnkillableSpawner());
     }
 }

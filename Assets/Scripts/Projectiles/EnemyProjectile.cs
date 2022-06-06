@@ -9,10 +9,12 @@ public class EnemyProjectile : MoveForward
     Rigidbody rigidBdy;
     private void Awake()
     {
-        speed = 3000;
+        speed = 2500;
 
         player = GameObject.Find("Player");
         rigidBdy = GetComponent<Rigidbody>();
+
+        StartCoroutine(EnableDamage());
     }
 
     // Update is called once per frame
@@ -30,6 +32,13 @@ public class EnemyProjectile : MoveForward
     private void Update()
     {
         
+    }
+
+    IEnumerator EnableDamage()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        canDamage = true;
     }
 
 }
