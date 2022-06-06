@@ -7296,7 +7296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: dcd0b23bc9f8a544098f3acdf8fc0351, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 29aeffdc5d1a98347830546ed69d3bd4, type: 2}
   isGlobal: 1
   blendDistance: 1
   weight: 1

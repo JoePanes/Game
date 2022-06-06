@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -179,7 +180,7 @@ public class PlayerController : MonoBehaviour
             powerAttackGoldCount = 0;
         }
 
-        if (collectedGold % 5 == 0)
+        if (collectedGold % 10 == 0)
         {
             health += 1;
             DisplayHealth();
@@ -270,7 +271,7 @@ public class PlayerController : MonoBehaviour
 
 
             //Spawn rune
-            Instantiate(sigil, transform.position, transform.rotation);
+            Instantiate(sigil, transform.position + new Vector3(0, 0.25f, 0), transform.rotation);
             canPlaceRune = true;
 
         } else
@@ -288,10 +289,19 @@ public class PlayerController : MonoBehaviour
 
         anim.SetBool("isGameOver", true);
         audioMana.Play("PlayerDeath");
+
+        StartCoroutine(SwitchScene());
     }
 
-    public bool isGameOver()
+    public bool IsGameOver()
     {
         return gameOver;
+    }
+
+    IEnumerator SwitchScene()
+    {
+        yield return new WaitForSeconds(5);
+
+        SceneManager.LoadScene(2);
     }
 }

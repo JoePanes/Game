@@ -6016,7 +6016,7 @@ GameObject:
   - component: {fileID: 631264235}
   - component: {fileID: 631264234}
   - component: {fileID: 631264233}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Base (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6279,7 +6279,7 @@ GameObject:
   - component: {fileID: 642199345}
   - component: {fileID: 642199344}
   - component: {fileID: 642199343}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Base (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7162,7 +7162,7 @@ GameObject:
   - component: {fileID: 831106581}
   - component: {fileID: 831106580}
   - component: {fileID: 831106579}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7495,7 +7495,7 @@ GameObject:
   - component: {fileID: 890850977}
   - component: {fileID: 890850978}
   - component: {fileID: 890850979}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Altar
   m_TagString: Surface
   m_Icon: {fileID: 0}
@@ -13827,7 +13827,7 @@ GameObject:
   - component: {fileID: 1593179893}
   - component: {fileID: 1593179892}
   - component: {fileID: 1593179891}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Base (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14744,7 +14744,7 @@ GameObject:
   - component: {fileID: 1669409395}
   - component: {fileID: 1669409394}
   - component: {fileID: 1669409393}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Base (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16172,7 +16172,6 @@ MonoBehaviour:
   - {fileID: 1468127194560567542, guid: ad6287bf31b2c284b949ae7aab4f16de, type: 3}
   - {fileID: 4774910988908166541, guid: 0c719af94ba0226419c51a43bf98350a, type: 3}
   - {fileID: 4774910988908166541, guid: 0c719af94ba0226419c51a43bf98350a, type: 3}
-  rangedEnemy: {fileID: 1468127194560567542, guid: ad6287bf31b2c284b949ae7aab4f16de, type: 3}
   unkillableEnemy: {fileID: 3282730685329579848, guid: 7ab132be3453b3a4bb9607bb1ee1a3af, type: 3}
 --- !u!4 &1817776946 stripped
 Transform:
@@ -19365,7 +19364,11 @@ PrefabInstance:
       objectReference: {fileID: 1709075596}
     - target: {fileID: 5726873657659702750, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
       propertyPath: m_UseGravity
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5726873657659702750, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
+      propertyPath: m_Constraints
+      value: 84
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aa56906cc576d044b99263b38d68c4f, type: 3}
