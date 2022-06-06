@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator WaitForStartingAnimation()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(15);
         canMove = true;
     }
 
@@ -183,13 +183,11 @@ public class PlayerController : MonoBehaviour
         {
             health += 1;
             DisplayHealth();
-        }
-        
 
-        Debug.Log(powerAttackGoldCount);
+        }
     }
 
-    public void TakeDamage()
+        public void TakeDamage()
     {
         if (health > 0)
         {

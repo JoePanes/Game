@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -8,7 +9,7 @@ public class SpawnManager : MonoBehaviour
     private float spawnRangeZ = 60;
 
     private float spawnDelay = 2;
-    private float spawnInterval = 1;
+    private float spawnInterval = 0;
 
     private int currentUnkillableAmount;
     private int maxUnkillable= 5;
@@ -17,12 +18,15 @@ public class SpawnManager : MonoBehaviour
     private int maxTreasure = 10;
     private int currentEnemiesAlive;
     private int currentTreasure;
+
     public GameObject[] objectPrefabs;
+
+    public GameObject[] enemyPrefabs;
 
     private int unkillableSpawnThreshold = 20;
 
     [SerializeField]
-    private GameObject UnkillableEnemy;
+    private GameObject unkillableEnemy;
 
     private PlayerController playerControl;
 
@@ -38,7 +42,10 @@ public class SpawnManager : MonoBehaviour
 
         //Spawners
         InvokeRepeating("SpawnObject", spawnDelay, spawnInterval);
+
         StartCoroutine(UnkillableSpawner());
+
+        StartCoroutine(EnemySpawner());
     }
 
     // Update is called once per frame
@@ -47,14 +54,20 @@ public class SpawnManager : MonoBehaviour
         
     }
 
+    void SpawnEnemy()
+    {
+        int index = Random.Range(0, enemyPrefabs.Length);
+
+        SpawnObject(enemyPrefabs[index]);
+    }
+
     void SpawnObject()
     {
         int index = Random.Range(0, objectPrefabs.Length);
 
         SpawnObject(objectPrefabs[index]);
-
-
     }
+
 
     void SpawnObject(GameObject currentObject)
     {
@@ -183,10 +196,19 @@ public class SpawnManager : MonoBehaviour
 
         if (numberToSpawn > 0 && numberToSpawn > currentUnkillableAmount)
         {
-            SpawnObject(UnkillableEnemy);
+            SpawnObject(unkillableEnemy);
             currentUnkillableAmount += 1;
         }
         yield return new WaitForSeconds(Random.Range(10, 100));
         StartCoroutine(UnkillableSpawner());
+    }
+
+    IEnumerator EnemySpawner()
+    {
+        yield return new WaitForSeconds(Random.Range(spawnInterval, spawnInterval * 10));
+
+        SpawnEnemy();
+
+        StartCoroutine(EnemySpawner());
     }
 }
