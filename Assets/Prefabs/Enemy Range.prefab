@@ -2946,7 +2946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  deathSound: {fileID: 8300000, guid: 39440b95424d1c343a9f3276f4936045, type: 3}
+  deathSound: {fileID: 8300000, guid: 0dda36a64e2d0614395b93033e300961, type: 3}
 --- !u!195 &1466681985881463049
 NavMeshAgent:
   m_ObjectHideFlags: 0

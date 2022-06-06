@@ -11,6 +11,9 @@ public class PlayerControllerEndScreen : MonoBehaviour
     bool canMove = true;
     float forwardInput;
 
+    public GameObject words;
+
+
     private void Start()
     {
         playerRb = GetComponent<Rigidbody>();    
@@ -30,6 +33,10 @@ public class PlayerControllerEndScreen : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         canMove = false;
+        if (words.activeSelf)
+        {
+            words.GetComponent<AudioSource>().Play();
+        }
         StartCoroutine(GoToGameScreen());
     }
 
