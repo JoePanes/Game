@@ -9,7 +9,7 @@ public class SpawnManager : MonoBehaviour
     private float spawnRangeZ = 60;
 
     private float spawnDelay = 2;
-    private float spawnInterval = 0;
+    private float spawnInterval = 5;
 
     private int currentUnkillableAmount;
     private int maxUnkillable= 5;
@@ -205,7 +205,7 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator EnemySpawner()
     {
-        yield return new WaitForSeconds(Random.Range(spawnInterval, spawnInterval * 10));
+        yield return new WaitForSeconds(Random.Range(spawnInterval, spawnInterval * 5));
 
         SpawnEnemy();
 
