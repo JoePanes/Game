@@ -8,6 +8,8 @@ TagManager:
   - Surface
   - Treasure
   - Boundary
+  - Unkillable
+  - Ranged
   layers:
   - Default
   - TransparentFX

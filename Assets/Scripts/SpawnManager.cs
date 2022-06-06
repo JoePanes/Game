@@ -8,20 +8,28 @@ public class SpawnManager : MonoBehaviour
     private float spawnRangeZ = 60;
 
     private float spawnDelay = 2;
-    private float spawnInterval = 5;
+    private float spawnInterval = 1;
 
-    private int maxEnemies = 2;
-    private int maxTreasure = 1;
+    private int currentUnkillableAmount;
+    private int maxUnkillable= 5;
+
+    private int maxEnemies = 20;
+    private int maxTreasure = 10;
     private int currentEnemiesAlive;
     private int currentTreasure;
     public GameObject[] objectPrefabs;
+
+    [SerializeField]
+    private GameObject UnkillableEnemy;
+
     // Start is called before the first frame update
     void Start()
     {
+        currentUnkillableAmount = GameObject.FindGameObjectsWithTag("Unkillable").Length;
         currentEnemiesAlive = GameObject.FindGameObjectsWithTag("Enemy").Length;
         currentTreasure = GameObject.FindGameObjectsWithTag("Treasure").Length;
 
-        InvokeRepeating("SpawnObjects", spawnDelay, spawnInterval);
+        InvokeRepeating("SpawnObject", spawnDelay, spawnInterval);
     }
 
     // Update is called once per frame
@@ -30,38 +38,92 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-    void SpawnObjects()
+    void SpawnObject()
     {
         int index = Random.Range(0, objectPrefabs.Length);
 
-        bool isEnemy = objectPrefabs[index].CompareTag("Enemy");
+        spawnObject(objectPrefabs[index]);
 
-        //Check if current object should be spawned
-        if (isEnemy)
+
+    }
+
+    void spawnObject(GameObject currentObject)
+    {
+        if (CheckIfObjectAllowed(currentObject))
+        {
+            SpawnCurrentObject(currentObject);
+        }
+        else
+        {
+            return;
+        }
+
+    }
+
+    bool EnoughUnkillable()
+    {
+        return currentUnkillableAmount >= maxUnkillable;
+    }
+
+    bool EnoughEnemies()
+    {
+        return currentEnemiesAlive >= maxEnemies;
+    }
+
+    bool EnoughTreasure()
+    {
+        return currentTreasure >= maxTreasure;
+    }
+
+
+
+    void SpawnCurrentObject(GameObject currentObject)
+    {
+        Vector3 spawnLocation = GenerateSpawnPosition();
+
+        Instantiate(currentObject, spawnLocation, currentObject.transform.rotation);
+    }
+
+    bool CheckIfObjectAllowed(GameObject currentObject)
+    {
+        if (currentObject.CompareTag("Enemy"))
         {
             //If max enemies reached, don't spawn
-            if (currentEnemiesAlive >= maxEnemies)
+            if (EnoughEnemies())
             {
-                return;
-            } else
+                return false;
+            }
+            else
             {
                 currentEnemiesAlive += 1;
             }
-        } else
+        }
+        else if (currentObject.CompareTag("Treasure"))
         {
             //Don't spawn more treasure past a certain limit
-            if (currentTreasure >= maxTreasure)
+            if (EnoughTreasure())
             {
-                return;
-            } else
+                return false;
+            }
+            else
             {
                 currentTreasure += 1;
             }
+        } else if (currentObject.CompareTag("Unkillable"))
+        {
+            if (EnoughUnkillable())
+            {
+                return false;
+            } else
+            {
+                currentUnkillableAmount += 1;
+            }
+        } else
+        {
+            Debug.Log("You object does not bear a recognised tag that is configured to work with CheckIfObjectAllowed().");
+            return false;
         }
-        Vector3 spawnLocation = GenerateSpawnPosition();
-        
-        Instantiate(objectPrefabs[index], spawnLocation, objectPrefabs[index].transform.rotation);
-
+        return true;
     }
 
     Vector3 GenerateSpawnPosition()

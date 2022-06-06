@@ -38,7 +38,7 @@ public class EnemyAIRanged : EnemyAI
 
     private void SpawnProjectile()
     {
-        Vector3 spawnPos = new Vector3 (1f, 1f, 0f) + Vector3.forward;
+        Vector3 spawnPos = new Vector3 (2f, 1f, 0f) + Vector3.forward;
         Instantiate(projectile, spawnPos, transform.rotation);
     }
 

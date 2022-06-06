@@ -7,8 +7,13 @@ public class Unkillable : MonoBehaviour
 
     private float speed = 2;
 
-    public GameObject player;
+    private GameObject player;
 
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
     // Update is called once per frame
     void Update()
     {
@@ -26,7 +31,6 @@ public class Unkillable : MonoBehaviour
         {
             do 
             {
-                
                 other.GetComponent<PlayerController>().TakeDamage();
             } while (other.GetComponent<PlayerController>().NoHealth() == false);
         }
