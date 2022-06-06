@@ -2,17 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyProjectile : MonoBehaviour
+public class EnemyProjectile : MoveForward
 {
-    // Start is called before the first frame update
-    void Start()
+    private GameObject player;
+
+    Rigidbody rigidBdy;
+    private void Awake()
+    {
+        speed = 3000;
+
+        player = GameObject.Find("Player");
+        rigidBdy = GetComponent<Rigidbody>();
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        Vector3 playerPos = player.transform.position;
+
+        transform.LookAt(playerPos);
+
+        rigidBdy.AddRelativeForce(Vector3.forward * speed * Time.deltaTime);
+
+
+    }
+
+    private void Update()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

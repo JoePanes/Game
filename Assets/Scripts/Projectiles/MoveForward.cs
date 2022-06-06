@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class MoveForward : MonoBehaviour
 {
-    public float speed;
+    protected static float speed;
+
+    protected static AudioSource audiosource;
     // Start is called before the first frame update
     void Start()
     {
-
+        audiosource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
@@ -27,6 +29,9 @@ public class MoveForward : MonoBehaviour
         {
             other.GetComponent<PlayerController>().TakeDamage();
         }
+
         Destroy(gameObject);
+
     }
+
 }

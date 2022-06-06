@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ParticleRotation : MonoBehaviour
 {
-    private float speed = 100;
+    private float speed = 200;
 
     void Update()
     {
