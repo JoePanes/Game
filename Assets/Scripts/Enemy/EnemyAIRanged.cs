@@ -33,7 +33,7 @@ public class EnemyAIRanged : EnemyAI
             StartCoroutine(ResetAttack());
         }
 
-        agent.SetDestination(transform.position);
+        agent.SetDestination(walkPoint + Vector3.back * 1);
     }
 
     private void SpawnProjectile()
@@ -43,7 +43,7 @@ public class EnemyAIRanged : EnemyAI
 
     IEnumerator ResetAttack()
     {
-        yield return new WaitForSeconds(Random.Range(10, 20));
+        yield return new WaitForSeconds(Random.Range(2, 7));
         hasAttackedPlayer = false;
     }
 }

@@ -9,7 +9,7 @@ public class EnemyProjectile : MoveForward
     Rigidbody rigidBdy;
     private void Awake()
     {
-        speed = 2500;
+        speed = 3000;
 
         player = GameObject.Find("Player");
         rigidBdy = GetComponent<Rigidbody>();

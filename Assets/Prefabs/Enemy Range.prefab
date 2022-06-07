@@ -2957,7 +2957,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 4
+  m_Speed: 8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 360
@@ -2990,8 +2990,8 @@ MonoBehaviour:
   walkPoint: {x: 5.733245, y: 0.00000011920929, z: 6.404796}
   walkPointSet: 1
   walkPointRange: 10
-  sightRange: 20
-  attackRange: 10
+  sightRange: 30
+  attackRange: 15
   playerInSightRange: 0
   playerInAttackRange: 0
   attackingPlayer: 0
