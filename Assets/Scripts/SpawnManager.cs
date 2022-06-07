@@ -161,7 +161,7 @@ public class SpawnManager : MonoBehaviour
     {
         currentEnemiesAlive -= 1;
         IncremenetMaxEnemies();
-        IncrementMaxTreasure()
+        IncrementMaxTreasure();
     }
 
     public void DecrementTreasureCount()
