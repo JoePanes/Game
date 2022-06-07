@@ -7,14 +7,13 @@ public class Angel : MonoBehaviour
 
     GameObject player;
     Animator anim;
-    AudioSource audioSource;
-    public AudioClip chanting;
+
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-        audioSource = GetComponent<AudioSource>();
+
 
         anim = gameObject.GetComponent<Animator>();
     }
@@ -23,12 +22,10 @@ public class Angel : MonoBehaviour
     {
         if (player.transform.position.z >= -12)
         {
-            anim.SetBool("playerInRange", true);
-            audioSource.PlayOneShot(chanting);   
+            anim.SetBool("playerInRange", true); 
         } else
         {
             anim.SetBool("playerInRange", false);
-            audioSource.Stop();
         }
     }
 

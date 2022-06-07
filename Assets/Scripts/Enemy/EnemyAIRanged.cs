@@ -13,7 +13,6 @@ public class EnemyAIRanged : EnemyAI
     private void Start()
     {
         hasAttackedPlayer = false;
-        SpawnProjectile();
     }
 
     public override void AttackPlayer()

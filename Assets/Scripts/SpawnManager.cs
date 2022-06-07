@@ -161,6 +161,7 @@ public class SpawnManager : MonoBehaviour
     {
         currentEnemiesAlive -= 1;
         IncremenetMaxEnemies();
+        IncrementMaxTreasure()
     }
 
     public void DecrementTreasureCount()
@@ -172,8 +173,11 @@ public class SpawnManager : MonoBehaviour
     {
         maxEnemies += 1;
 
-        //Update treasure
-        maxTreasure = maxEnemies / 2;
+    }
+
+    void IncrementMaxTreasure()
+    {
+        maxTreasure += 1;
     }
 
     private int GetNumberOfUnkillableToSpawn()
