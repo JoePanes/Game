@@ -68,16 +68,24 @@ public class EnemyAI : MonoBehaviour
 
     public void Patroling()
     {
-        if (!walkPointSet) SearchWalkPoint();
+        if (!walkPointSet)
+        {
+            SearchWalkPoint();
+        }
 
         if (walkPointSet)
+        {
             agent.SetDestination(walkPoint);
+
+        }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
         //Walkpoint reached
         if (distanceToWalkPoint.magnitude < 1f)
+        {
             walkPointSet = false;
+        }
     }
     public void SearchWalkPoint()
     {
@@ -89,7 +97,9 @@ public class EnemyAI : MonoBehaviour
 
         //Make sure point in on the ground
         if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        {
             walkPointSet = true;
+        }
 
         //If player gets away and the enemy has been in attacking range, reset speed
         if (attackingPlayer)
@@ -115,4 +125,5 @@ public class EnemyAI : MonoBehaviour
     {
         return;
     }
+
 }

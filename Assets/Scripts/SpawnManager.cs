@@ -14,8 +14,8 @@ public class SpawnManager : MonoBehaviour
     private int currentUnkillableAmount;
     private int maxUnkillable= 5;
 
-    private int maxEnemies = 20;
-    private int maxTreasure = 10;
+    private int maxEnemies = 4;
+    private int maxTreasure = 2;
     private int currentEnemiesAlive;
     private int currentTreasure;
 
@@ -205,10 +205,14 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator EnemySpawner()
     {
-        yield return new WaitForSeconds(Random.Range(spawnInterval, spawnInterval * 5));
-
-        SpawnEnemy();
-
+        yield return new WaitForSeconds(Random.Range(spawnInterval*5, spawnInterval * 10));
+        if (currentEnemiesAlive < maxEnemies / 2)
+        {
+            do
+            {
+                SpawnEnemy();
+            } while (currentEnemiesAlive < maxEnemies);
+        }
         StartCoroutine(EnemySpawner());
     }
 }

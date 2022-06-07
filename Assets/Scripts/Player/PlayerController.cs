@@ -10,9 +10,9 @@ public class PlayerController : MonoBehaviour
     private int health;
     public int collectedGold { get; private set;}
 
-    private float speed = 2500;
+    private float speed = 10000;
     private float normalSpeed;
-    private float sprintSpeed = 4500;
+    private float sprintSpeed = 20000;
     private float turnSpeed = 75;
 
     private float forwardInput;
@@ -124,11 +124,11 @@ public class PlayerController : MonoBehaviour
         // if the player is moving backwards, reduce speed
         if (forwardInput < 0)
         {
-            playerRb.AddForce(transform.forward * (speed - (speed * 0.5f))  * forwardInput);
+            playerRb.AddForce(transform.forward * (speed - (speed *0.5f))  * forwardInput * Time.deltaTime);
         }
         else
         {
-            playerRb.AddForce(transform.forward * speed * forwardInput);
+            playerRb.AddForce(transform.forward * speed * forwardInput * Time.deltaTime);
 
         }
 
@@ -180,7 +180,7 @@ public class PlayerController : MonoBehaviour
             powerAttackGoldCount = 0;
         }
 
-        if (collectedGold % 10 == 0)
+        if (collectedGold % 5 == 0)
         {
             health += 1;
             DisplayHealth();
